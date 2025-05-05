@@ -1,1 +1,1 @@
-export const TOKEN_SECRET = 'some secret key';
+export const TOKEN_SECRET = 'some secret key';  // esta es la clave secreta para firmar el token JWT

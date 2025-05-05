@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { register, login, logout, profile } from "../controllers/auth.controller.js";
+import { register, login, logout, profile , verifyToken } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 
 import { validateSchema } from "../middlewares/validator.middleware.js"; // middleware para validar el schema
@@ -15,6 +15,7 @@ router.post("/register" , validateSchema(registerSchema), register); // registro
 router.post("/login" ,validateSchema(loginSchema), login); // login con validacion de schema
 router.post("/logout", logout) // logout
 // el logout no necesita validacion de schema porque no se envia nada en el body
+router.get("/verify",verifyToken) // verificacion de token
 router.get("/profile", authRequired, profile ) // perfil del usuario autenticado con el middleware authRequired
 // el middleware authRequired se encarga de verificar si el usuario esta autenticado
 
